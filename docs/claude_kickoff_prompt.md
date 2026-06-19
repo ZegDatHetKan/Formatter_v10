@@ -17,7 +17,7 @@ Goal for this run:
 Create the historical corpus and prepare the first deterministic formatter for letters.
 
 Source archive:
-/home/bgl1/inspect_2026-20260619T124623Z-3-001
+_source/inspect_2026-20260619T124623Z-3-001
 
 Tasks:
 1. Create previous_works/.
@@ -29,7 +29,7 @@ Tasks:
 6. Focus only on document_type = letters.
 7. Analyze letters input/output/report examples.
 8. Update docs/letters_formatter_design.md with the structure you infer.
-9. Implement the first Python letters formatter slice.
+9. Implement the first Python letters formatter slice as a deterministic composer.
 10. Run it on at least 3 representative letters.
 11. Produce a short final report with status, test results, known gaps, and next steps.
 
@@ -38,6 +38,9 @@ Constraints:
 - Do not implement acts yet.
 - Do not hide uncertainty. Mark needs_review.
 - Preserve legal text.
+- AI extracts semantic blocks; Python owns all layout and styles.
+- Do not ask AI to choose fonts, sizes, margins, alignment, or ad hoc styling in specialized modes.
+- Extra sections must use predefined rules, set needs_review, or route to generic_fallback.
 - Prefer deterministic Python rules over AI.
 - Keep prompts and docs compact.
 

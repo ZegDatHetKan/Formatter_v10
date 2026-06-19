@@ -6,6 +6,30 @@ Build a lower-cost formatting pipeline for legal documents.
 
 The current formatter uses AI heavily to transform `.txt` or `.docx` input into a correctly formatted `.docx`. It works reasonably well but costs too much. The new pipeline should encode stable formatting behavior in Python scripts and use AI only where it adds value.
 
+## Core Architecture Principle
+
+Specialized formatters are **template composers**, not AI formatting prompts.
+
+For known document families, the division of responsibility is:
+
+- AI or lightweight parsing extracts semantic content blocks from the input.
+- Python owns the document skeleton, paragraph order, styles, sizes, margins, alignment, indentation, spacing, template usage, and final `.docx` generation.
+- AI must not decide visual formatting when a deterministic formatter exists.
+
+The preferred flow is:
+
+```text
+input.docx / input.txt
+  -> semantic extraction
+  -> normalized JSON blocks
+  -> deterministic Python formatter
+  -> final.docx + report
+```
+
+The extraction JSON should describe what each content piece **is**, not how it should look. Example labels: `date_place`, `delivery_method`, `recipient_block`, `subject_line`, `body_paragraph`, `section_heading`, `closing`, `signature_block`, `attachments`.
+
+Python maps those labels to exact formatting.
+
 ## Document Families
 
 The system has three main document families:
@@ -29,7 +53,10 @@ Fallback triggers:
 - Unknown document family.
 - Low classifier confidence.
 - Specialized formatter failure.
+- Specialized formatter detects a structure outside its supported skeleton.
 - User explicitly requests generic fallback.
+
+Extra sections inside a known family should not make the AI invent formatting. The formatter may include a controlled `extra_section` block only if it has a deterministic style rule. Otherwise it must emit `needs_review` or route to `generic_fallback`.
 
 ## Target CLI
 
@@ -64,11 +91,14 @@ Implement only `letters` first.
 The first letters formatter should:
 
 - Read `.docx` input.
-- Detect common blocks: date, delivery method, recipient, object, body, section headings, closing, signature.
-- Apply deterministic styles: font, size, margins, alignment, indentation, spacing, keep-with-next where needed.
+- Extract or receive common semantic blocks: date, delivery method, recipient, object, body, section headings, closing, signature.
+- Compose the output from a hardcoded letter skeleton.
+- Apply deterministic styles for every paragraph type: font, size, margins, alignment, indentation, spacing, keep-with-next where needed.
 - Avoid duplicating template header/footer.
 - Produce a `.docx` output and a technical report.
 - Mark uncertain cases as `needs_review`.
+
+The goal is to hardcode as much repeatable structure as possible. The generic fallback exists for strange documents and last-mile edge cases, not as the default path.
 
 ## Success Criteria
 

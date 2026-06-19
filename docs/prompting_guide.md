@@ -217,6 +217,26 @@ Do not mix unrelated responsibilities in one agent.
 - Always require a report for formatter changes.
 - Always preserve legal text unless the user explicitly asks for content edits.
 - Prefer `needs_review` over hidden assumptions.
+- For specialized formatters, prompt AI to extract semantic blocks only.
+- Do not prompt AI to decide fonts, sizes, margins, alignment, indentation, or paragraph styling when Python has a deterministic formatter.
+- Prompt outputs for extraction should be structured JSON, not prose.
+- If the document contains unsupported structure, ask the model to mark `needs_review` instead of inventing layout.
+
+## Semantic Extraction Frame
+
+Use this frame when AI prepares input for a deterministic formatter:
+
+```text
+Task: extract semantic blocks for the letters formatter.
+Context: Italian law firm document. Python owns all DOCX styling.
+Input: document text.
+Constraints:
+- Preserve text exactly.
+- Do not decide visual formatting.
+- Use only allowed block kinds.
+- Mark needs_review for unsupported structure.
+Output: JSON only matching the schema.
+```
 
 ## Future Additions
 
