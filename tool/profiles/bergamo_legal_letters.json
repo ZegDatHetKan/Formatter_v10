@@ -1,0 +1,71 @@
+{
+  "profile_id": "bergamo_legal_letters",
+  "client": "Bergamo Legal",
+  "document_family": "letters",
+  "title": "Anatomia della lettera Bergamo Legal",
+  "output_html": "output/html/lettera_anatomia_colori.html",
+  "output_report": "output/reports/lettera_anatomia_colori_report.md",
+  "source_of_truth": [
+    "docs/letters_formatter_design.md",
+    "formatters/letters.py"
+  ],
+  "intro": "Mappa operativa per il formatter letters: l'AI deve solo estrarre o classificare blocchi semantici; font, margini, rientri, spaziature e allineamenti restano deterministici in Python.",
+  "page": {
+    "label": "Schema colorato della lettera",
+    "min_height_px": 920
+  },
+  "colors": {
+    "template": "#e8eef7",
+    "delivery": "#d7f3ec",
+    "date": "#fff0bf",
+    "recipient": "#fde1d9",
+    "subject": "#dfe5ff",
+    "opening": "#efe3ff",
+    "body": "#eef7df",
+    "section": "#ffd9e8",
+    "list": "#d8ecff",
+    "closing": "#ffe5c8",
+    "attachments": "#e0e0e0"
+  },
+  "blocks": [
+    {"kind": "template", "sample": "HEADER TEMPLATE: logo, BERGAMO LEGAL, soci e recapiti alti"},
+    {"kind": "delivery", "sample": "A mezzo PEC / Raccomandata / anticipata via email"},
+    {"kind": "date", "sample": "Bergamo, li [DA INSERIRE: data]"},
+    {"kind": "recipient", "sample": "<strong>Spett.le / Egr. Sig.</strong><br>Nome destinatario<br>Indirizzo / PEC"},
+    {"kind": "subject", "sample": "<strong class=\"subject-label\">Oggetto:</strong> riepilogo sintetico della comunicazione, nello stesso paragrafo."},
+    {"kind": "opening", "sample": "Egregio Signore, / Spett.le Societa,"},
+    {"kind": "body", "sample": "Corpo della lettera: paragrafi giustificati, Times New Roman 12 pt, contenuto preservato e normalizzato solo dove la regola e stabile."},
+    {"kind": "section", "sample": "IN FATTO / DIFFIDA / INVITA"},
+    {"kind": "body", "sample": "Paragrafi argomentativi ordinari dopo il titolo rituale."},
+    {"kind": "list", "sample": "1. Punto numerato con prefisso in grassetto.<br>(i) Sotto-punto o elenco rientrato."},
+    {"kind": "closing", "sample": "Cordiali saluti<br><strong>Avv. Nome Cognome</strong>"},
+    {"kind": "attachments", "sample": "<strong>Allegati:</strong><br>All. 1 - Documento<br>All. 2 - Documento"},
+    {"kind": "template", "sample": "FOOTER TEMPLATE: R.E.A., C.F./P.IVA, indirizzi, contatti"}
+  ],
+  "legend": [
+    {"kind": "template", "label": "Template", "description": "Header/footer e margini: ereditati da <code>Template_Vuoto.docx</code>, mai ricreati dall'AI."},
+    {"kind": "delivery", "label": "delivery_method", "description": "Mezzo di invio, allineato a destra, corsivo."},
+    {"kind": "date", "label": "date_place", "description": "Luogo e data, allineati a destra."},
+    {"kind": "recipient", "label": "recipient_block", "description": "Destinatario con rientro sinistro 8.5 cm."},
+    {"kind": "subject", "label": "subject_line", "description": "<code>Oggetto:</code> 16 pt + contenuto 12 pt, un solo paragrafo."},
+    {"kind": "opening", "label": "opening", "description": "Formula di apertura del corpo."},
+    {"kind": "body", "label": "body", "description": "Testo ordinario giustificato, 12 pt."},
+    {"kind": "section", "label": "section_center / section_left", "description": "Titoli rituali centrati 16 pt o titoletti sinistri 14 pt."},
+    {"kind": "list", "label": "numbered / enum / bullet", "description": "Liste con rientro controllato e prefissi evidenziati."},
+    {"kind": "closing", "label": "closing_signature", "description": "Chiusura e firma a destra."},
+    {"kind": "attachments", "label": "attachments", "description": "Allegati a sinistra, label in grassetto."}
+  ],
+  "rules": [
+    {"label": "1. Template", "text": "Apri <code>Template_Vuoto.docx</code> e conserva header, footer e margini."},
+    {"label": "2. Input", "text": "Leggi paragrafi reali e righe separate da <code>\\n</code>."},
+    {"label": "3. Pulizia", "text": "Rimuovi letterhead duplicato, normalizza trattini e spazi instabili."},
+    {"label": "4. Classificazione", "text": "Usa <code>OGGETTO:</code> come ancora tra preambolo e corpo."},
+    {"label": "5. Emissione", "text": "Crea paragrafi Python con stili hardcoded per ogni blocco."},
+    {"label": "6. Report", "text": "Salva <code>.docx</code> e report con regole applicate, blocchi e warning."}
+  ],
+  "acceptance_questions": [
+    "Il cliente conferma che header/footer e margini vengono dal template?",
+    "Il cliente conferma posizione e stile di destinatario, oggetto, corpo e firma?",
+    "Il cliente conferma quando un caso va in needs_review invece che in fallback generico?"
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "profile_id": "acts_discovery_template",
+  "client": "CLIENTE_DA_CONFERMARE",
+  "document_family": "acts",
+  "title": "Anatomia atti - bozza da esempi",
+  "output_html": "output/html/atti_anatomia_colori.html",
+  "output_report": "output/reports/atti_anatomia_colori_report.md",
+  "source_of_truth": [
+    "tool/PROCESS.md",
+    "docs/acts_formatter_design.md"
+  ],
+  "intro": "Bozza visuale da confermare con il cliente: blocchi, stili, margini, spaziature e regole di composizione per atti giudiziari o authority-facing.",
+  "page": {
+    "label": "Schema colorato degli atti",
+    "min_height_px": 1040
+  },
+  "colors": {
+    "template": "#e8eef7",
+    "court": "#d7f3ec",
+    "title": "#dfe5ff",
+    "party": "#fde1d9",
+    "metadata": "#fff0bf",
+    "section": "#ffd9e8",
+    "subsection": "#efe3ff",
+    "body": "#eef7df",
+    "claim": "#d8ecff",
+    "exhibit": "#ffe5c8",
+    "signature": "#e0e0e0",
+    "needs_review": "#f5d0fe"
+  },
+  "blocks": [
+    {"kind": "template", "sample": "HEADER / carta intestata / eventuale frontespizio - da verificare sugli esempi"},
+    {"kind": "court", "sample": "TRIBUNALE / CORTE / AUTORITA COMPETENTE"},
+    {"kind": "title", "sample": "RICORSO / ISTANZA / MEMORIA / DENUNCIA-QUERELA"},
+    {"kind": "party", "sample": "Per: ricorrente / istante / parte assistita<br>Contro: resistente / intimato / controparte"},
+    {"kind": "metadata", "sample": "Oggetto del giudizio / valore / procedimento / provvedimento impugnato"},
+    {"kind": "section", "sample": "IN FATTO / IN DIRITTO / RICHIESTE"},
+    {"kind": "subsection", "sample": "1. Premessa / 2. Motivo / In via preliminare"},
+    {"kind": "body", "sample": "Paragrafi argomentativi giustificati, con eventuali citazioni e riferimenti normativi."},
+    {"kind": "claim", "sample": "Voglia l'Ill.mo Tribunale... / In via principale... / In via subordinata..."},
+    {"kind": "exhibit", "sample": "Si producono: doc. 1, doc. 2, allegati e indice produzioni."},
+    {"kind": "signature", "sample": "Luogo, data<br>Avv. Nome Cognome"},
+    {"kind": "needs_review", "sample": "Blocchi non ricorrenti o ambigui: da discutere prima di automatizzare."}
+  ],
+  "legend": [
+    {"kind": "template", "label": "template / page_setup", "description": "Carta intestata, margini, header/footer e impostazioni pagina da misurare sugli output approvati."},
+    {"kind": "court", "label": "authority_header", "description": "Autorita destinataria o ufficio giudiziario; stile da confermare dagli esempi."},
+    {"kind": "title", "label": "act_title", "description": "Titolo principale dell'atto; dimensione, maiuscolo, grassetto e allineamento da derivare dal corpus."},
+    {"kind": "party", "label": "party_block", "description": "Parti, difensori, domicili, CF/P.IVA, PEC; richiede regole di rientro e bold."},
+    {"kind": "metadata", "label": "case_metadata", "description": "Oggetto, valore, procedimento, provvedimento impugnato o dati causa."},
+    {"kind": "section", "label": "section_heading", "description": "Sezioni centrali o maggiori, ad esempio IN FATTO, IN DIRITTO, RICHIESTE."},
+    {"kind": "subsection", "label": "subsection_heading", "description": "Motivi, paragrafi numerati o titoletti argomentativi."},
+    {"kind": "body", "label": "body_paragraph", "description": "Corpo argomentativo: font, dimensione, giustificazione, interlinea e spaziatura da misurare."},
+    {"kind": "claim", "label": "claims_block", "description": "Conclusioni e richieste: spesso hanno stile ricorrente separato dal body."},
+    {"kind": "exhibit", "label": "exhibits_block", "description": "Produzioni, allegati, documenti, indice."},
+    {"kind": "signature", "label": "signature_block", "description": "Luogo, data, firma e avvocato."},
+    {"kind": "needs_review", "label": "needs_review", "description": "Elementi non stabili: non automatizzare finche il cliente non conferma una regola."}
+  ],
+  "rules": [
+    {"label": "1. Corpus", "text": "Raccogli 8-12 output approvati dello stesso tipo, piu input se disponibili."},
+    {"label": "2. Misura", "text": "Estrai per ogni paragrafo: stile, font, size, allineamento, rientri, spaziatura, interlinea, keep-with-next."},
+    {"label": "3. Generalizza", "text": "Codifica solo regole ricorrenti in almeno piu esempi; le eccezioni restano feedback o needs_review."},
+    {"label": "4. Conferma", "text": "Mostra HTML/PDF colorato al cliente e chiedi conferma esplicita su blocchi e stili."},
+    {"label": "5. Implementa", "text": "Solo dopo conferma, crea formatter Python deterministico e report tecnico."},
+    {"label": "6. Verifica", "text": "Confronta output generato vs output storico su testo, struttura, stili, margini e warning."}
+  ],
+  "acceptance_questions": [
+    "Questi blocchi rappresentano tutti i tipi di sezione ricorrenti negli atti?",
+    "Quali blocchi devono essere obbligatori e quali opzionali?",
+    "Quali variazioni devono restare needs_review invece di essere automatizzate?",
+    "Il cliente conferma font, dimensioni, margini, rientri, spaziature e allineamenti?"
+  ]
+}
