@@ -1,10 +1,27 @@
-<!doctype html>
-<html lang="it">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bergamo Legal - anatomia lettera</title>
-  <style>
+#!/usr/bin/env python3
+"""Build the rich Bergamo Legal letters anatomy page.
+
+This page is the visual confirmation artifact for the work documented in:
+- previous_works/manifest.json
+- docs/letters_formatter_design.md
+- docs/feedback_review_lettere.md
+- tests/make_examples.py
+- formatters/letters.py
+"""
+
+from __future__ import annotations
+
+from datetime import datetime, timezone
+from pathlib import Path
+
+
+TOOL_ROOT = Path(__file__).resolve().parents[1]
+REPO_ROOT = TOOL_ROOT.parent
+OUT = TOOL_ROOT / "output" / "html" / "lettera_anatomia_colori.html"
+REPORT = TOOL_ROOT / "output" / "reports" / "lettera_anatomia_colori_report.md"
+
+
+CSS = """
 :root {
   --ink: #1f2933;
   --muted: #667085;
@@ -171,6 +188,50 @@ code {
   .legend { position: static; }
   .recipient { margin-left: 22%; }
 }
+""".strip()
+
+
+LEGEND = [
+    ("template", "template_header/footer", "Da Template_Vuoto.docx. Header, footer, logo e margini non sono ricreati dall'AI."),
+    ("delivery", "delivery_method", "Riconosciuto prima del destinatario. RIGHT, italic, 12 pt."),
+    ("date", "date_place", "Luogo/data breve. RIGHT, 12 pt."),
+    ("recipient", "recipient_block", "Preambolo prima di OGGETTO. Rientro sinistro 8.5 cm; onorifico isolato fuso col nome."),
+    ("subject", "subject_line", "Ancora strutturale. Etichetta Oggetto 16 pt bold + contenuto 12 pt bold, stesso paragrafo, JUSTIFY."),
+    ("opening", "opening", "Prima riga del corpo se formula di saluto. JUSTIFY, 12 pt."),
+    ("body", "body_paragraph", "Default del corpo. Times New Roman 12 pt, JUSTIFY, space_after 6 pt."),
+    ("section-left", "section_left", "Titoletto tipo Fatto/Diritto. LEFT, 14 pt bold, keep_with_next."),
+    ("section-center", "section_center", "Titolo rituale tipo DIFFIDA/INVITA. CENTER, 16 pt bold, keep_with_next/together."),
+    ("numbered", "numbered", "Paragrafi 1. / 1.1. JUSTIFY 12 pt, prefisso numero in bold."),
+    ("enum", "enum_item / bullet_item", "Elementi (i), (ii), a), bullet. JUSTIFY, rientro 0.5 cm."),
+    ("closing", "closing_signature", "Chiusura e firme finali. RIGHT 12 pt; nome avvocato in bold."),
+    ("attachments", "attachments", "Allegati e All. N. Label bold, item con rientro controllato."),
+    ("warning", "needs_review", "Placeholder o blocchi non coperti. Meglio review esplicita che output sbagliato silenzioso."),
+]
+
+
+def swatch(kind: str) -> str:
+    return f'<span class="swatch {kind}"></span>'
+
+
+def render_legend() -> str:
+    rows = []
+    for kind, label, desc in LEGEND:
+        rows.append(
+            f'<div class="legend-row">{swatch(kind)}<span><strong>{label}</strong><br>{desc}</span></div>'
+        )
+    return "\n".join(rows)
+
+
+def render_html() -> str:
+    generated = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    return f"""<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bergamo Legal - anatomia lettera</title>
+  <style>
+{CSS}
   </style>
 </head>
 <body>
@@ -234,20 +295,7 @@ code {
 
     <aside class="panel legend" aria-label="Legenda tecnica">
       <h2>Legenda</h2>
-<div class="legend-row"><span class="swatch template"></span><span><strong>template_header/footer</strong><br>Da Template_Vuoto.docx. Header, footer, logo e margini non sono ricreati dall'AI.</span></div>
-<div class="legend-row"><span class="swatch delivery"></span><span><strong>delivery_method</strong><br>Riconosciuto prima del destinatario. RIGHT, italic, 12 pt.</span></div>
-<div class="legend-row"><span class="swatch date"></span><span><strong>date_place</strong><br>Luogo/data breve. RIGHT, 12 pt.</span></div>
-<div class="legend-row"><span class="swatch recipient"></span><span><strong>recipient_block</strong><br>Preambolo prima di OGGETTO. Rientro sinistro 8.5 cm; onorifico isolato fuso col nome.</span></div>
-<div class="legend-row"><span class="swatch subject"></span><span><strong>subject_line</strong><br>Ancora strutturale. Etichetta Oggetto 16 pt bold + contenuto 12 pt bold, stesso paragrafo, JUSTIFY.</span></div>
-<div class="legend-row"><span class="swatch opening"></span><span><strong>opening</strong><br>Prima riga del corpo se formula di saluto. JUSTIFY, 12 pt.</span></div>
-<div class="legend-row"><span class="swatch body"></span><span><strong>body_paragraph</strong><br>Default del corpo. Times New Roman 12 pt, JUSTIFY, space_after 6 pt.</span></div>
-<div class="legend-row"><span class="swatch section-left"></span><span><strong>section_left</strong><br>Titoletto tipo Fatto/Diritto. LEFT, 14 pt bold, keep_with_next.</span></div>
-<div class="legend-row"><span class="swatch section-center"></span><span><strong>section_center</strong><br>Titolo rituale tipo DIFFIDA/INVITA. CENTER, 16 pt bold, keep_with_next/together.</span></div>
-<div class="legend-row"><span class="swatch numbered"></span><span><strong>numbered</strong><br>Paragrafi 1. / 1.1. JUSTIFY 12 pt, prefisso numero in bold.</span></div>
-<div class="legend-row"><span class="swatch enum"></span><span><strong>enum_item / bullet_item</strong><br>Elementi (i), (ii), a), bullet. JUSTIFY, rientro 0.5 cm.</span></div>
-<div class="legend-row"><span class="swatch closing"></span><span><strong>closing_signature</strong><br>Chiusura e firme finali. RIGHT 12 pt; nome avvocato in bold.</span></div>
-<div class="legend-row"><span class="swatch attachments"></span><span><strong>attachments</strong><br>Allegati e All. N. Label bold, item con rientro controllato.</span></div>
-<div class="legend-row"><span class="swatch warning"></span><span><strong>needs_review</strong><br>Placeholder o blocchi non coperti. Meglio review esplicita che output sbagliato silenzioso.</span></div>
+{render_legend()}
     </aside>
   </div>
 
@@ -283,7 +331,49 @@ code {
     <div class="panel"><h3>Report</h3><p><code>out/examples/esempio_1_diffida_report.md</code><br><code>out/RUN_REPORT.md</code></p></div>
   </section>
 
-  <p style="margin-top:28px">Generato da <code>tool/scripts/build_letters_anatomy_html.py</code> il 2026-06-22T14:02:09+00:00.</p>
+  <p style="margin-top:28px">Generato da <code>tool/scripts/build_letters_anatomy_html.py</code> il {generated}.</p>
 </main>
 </body>
 </html>
+"""
+
+
+def render_report() -> str:
+    generated = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    return f"""# Rich Letters Anatomy Report
+
+- generated_at: {generated}
+- script: `tool/scripts/build_letters_anatomy_html.py`
+- output: `tool/output/html/lettera_anatomia_colori.html`
+- purpose: visual confirmation artifact for the documented Bergamo Legal letters process
+
+## Inputs represented
+
+- `previous_works/manifest.json`: 32 historical jobs, 15 letters
+- `docs/letters_formatter_design.md`: semantic block grammar and style rules
+- `docs/feedback_review_lettere.md`: feedback review and anatomy
+- `tests/make_examples.py`: synthetic example letters
+- `formatters/letters.py`: deterministic formatter implementation
+
+## What this page shows
+
+- corpus classification summary
+- a synthetic diffida letter split into semantic blocks
+- a technical legend mapping colors to formatter blocks
+- confirmed style/layout rules
+- repeatable pipeline for future document families
+"""
+
+
+def main() -> int:
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    REPORT.parent.mkdir(parents=True, exist_ok=True)
+    OUT.write_text(render_html(), encoding="utf-8")
+    REPORT.write_text(render_report(), encoding="utf-8")
+    print(f"wrote {OUT.relative_to(REPO_ROOT)}")
+    print(f"wrote {REPORT.relative_to(REPO_ROOT)}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -1,48 +1,22 @@
-# Document Anatomy Report
+# Rich Letters Anatomy Report
 
-- generated_at: 2026-06-22T13:16:05+00:00
-- script: `tool/scripts/build_anatomy_html.py`
-- profile: `/tmp/Formatter_v10_push/tool/profiles/bergamo_legal_letters.json`
-- profile_id: `bergamo_legal_letters`
-- client: Bergamo Legal
-- document_family: letters
-- output: `output/html/lettera_anatomia_colori.html`
+- generated_at: 2026-06-22T14:02:09+00:00
+- script: `tool/scripts/build_letters_anatomy_html.py`
+- output: `tool/output/html/lettera_anatomia_colori.html`
+- purpose: visual confirmation artifact for the documented Bergamo Legal letters process
 
-## Source Of Truth
+## Inputs represented
 
-- `docs/letters_formatter_design.md`
-- `formatters/letters.py`
+- `previous_works/manifest.json`: 32 historical jobs, 15 letters
+- `docs/letters_formatter_design.md`: semantic block grammar and style rules
+- `docs/feedback_review_lettere.md`: feedback review and anatomy
+- `tests/make_examples.py`: synthetic example letters
+- `formatters/letters.py`: deterministic formatter implementation
 
-## Tool / Formatter Boundary
+## What this page shows
 
-- This report was produced by the format-definition tool.
-- It is a preparation artifact, not a production formatter output.
-- Once confirmed, the profile can be handed to `formatters/` for implementation.
-
-## What changed
-
-- Wrote the colored HTML anatomy page.
-- Preserved historical input/output files.
-- Did not run a production formatter or alter corpus/reference files.
-
-## Blocks rendered
-
-- template: HEADER TEMPLATE: logo, BERGAMO LEGAL, soci e recapiti alti
-- delivery: A mezzo PEC / Raccomandata / anticipata via email
-- date: Bergamo, li [DA INSERIRE: data]
-- recipient: &lt;strong&gt;Spett.le / Egr. Sig.&lt;/strong&gt;&lt;br&gt;Nome destinatario&lt;br&gt;Indi
-- subject: &lt;strong class=&quot;subject-label&quot;&gt;Oggetto:&lt;/strong&gt; riepilogo sintetico 
-- opening: Egregio Signore, / Spett.le Societa,
-- body: Corpo della lettera: paragrafi giustificati, Times New Roman 12 pt, contenuto preservato e
-- section: IN FATTO / DIFFIDA / INVITA
-- body: Paragrafi argomentativi ordinari dopo il titolo rituale.
-- list: 1. Punto numerato con prefisso in grassetto.&lt;br&gt;(i) Sotto-punto o elenco rientrato.
-- closing: Cordiali saluti&lt;br&gt;&lt;strong&gt;Avv. Nome Cognome&lt;/strong&gt;
-- attachments: &lt;strong&gt;Allegati:&lt;/strong&gt;&lt;br&gt;All. 1 - Documento&lt;br&gt;All. 2 - Docum
-- template: FOOTER TEMPLATE: R.E.A., C.F./P.IVA, indirizzi, contatti
-
-## Client confirmation questions
-
-- Il cliente conferma che header/footer e margini vengono dal template?
-- Il cliente conferma posizione e stile di destinatario, oggetto, corpo e firma?
-- Il cliente conferma quando un caso va in needs_review invece che in fallback generico?
+- corpus classification summary
+- a synthetic diffida letter split into semantic blocks
+- a technical legend mapping colors to formatter blocks
+- confirmed style/layout rules
+- repeatable pipeline for future document families

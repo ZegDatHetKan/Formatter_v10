@@ -9,12 +9,11 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PROFILE = ROOT / "tool" / "profiles" / "bergamo_legal_letters.json"
-BUILDER = ROOT / "tool" / "scripts" / "build_anatomy_html.py"
+BUILDER = ROOT / "tool" / "scripts" / "build_letters_anatomy_html.py"
 
 
 def main() -> int:
-    return subprocess.call([sys.executable, str(BUILDER), str(PROFILE)])
+    return subprocess.call([sys.executable, str(BUILDER)])
 
 
 if __name__ == "__main__":

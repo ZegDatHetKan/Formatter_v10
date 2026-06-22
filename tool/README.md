@@ -66,7 +66,7 @@ repository or package with minimal changes.
 Generate the confirmed letters anatomy:
 
 ```bash
-python3 tool/scripts/build_anatomy_html.py tool/profiles/bergamo_legal_letters.json
+python3 tool/scripts/build_letters_anatomy_html.py
 ```
 
 Generate the initial acts discovery anatomy:
