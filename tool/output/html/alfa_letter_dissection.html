@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vivisezione lettera Alfa - Bergamo Legal</title>
+  <style>
+    :root {
+      --ink: #1f2933;
+      --muted: #667085;
+      --line: #cfd7e3;
+      --paper: #ffffff;
+      --bg: #f4f6f8;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: Arial, Helvetica, sans-serif; line-height: 1.45; }
+    main { max-width: 1420px; margin: 0 auto; padding: 28px 24px 52px; }
+    h1 { margin: 0 0 8px; font-size: 30px; letter-spacing: 0; }
+    h2 { margin: 30px 0 12px; font-size: 20px; letter-spacing: 0; }
+    p { margin: 0 0 12px; color: var(--muted); }
+    code { background: #eef2f6; border: 1px solid #d8e0eb; border-radius: 4px; padding: 1px 4px; }
+    .top-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+    .panel { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 14px; }
+    .panel h3 { margin: 0 0 8px; font-size: 15px; }
+    .panel ul { margin: 8px 0 0; padding-left: 18px; }
+    .layout { display: grid; grid-template-columns: minmax(360px, 1fr) minmax(360px, 470px); gap: 18px; align-items: start; }
+    .letter-stack { display: grid; gap: 9px; }
+    .para-card { display: grid; grid-template-columns: 52px 1fr; background: var(--paper); border: 1px solid var(--line); border-left: 12px solid var(--role-color); border-radius: 8px; overflow: hidden; }
+    .para-number { background: rgba(31,41,51,.05); padding: 10px 8px; font-weight: 700; font-size: 13px; text-align: center; }
+    .para-body { padding: 10px 12px; }
+    .para-meta { margin-bottom: 5px; color: #344054; font-size: 13px; }
+    .para-text { margin: 0 0 10px; color: var(--ink); font-family: "Times New Roman", Times, serif; font-size: 16px; }
+    .spec-grid { display: grid; grid-template-columns: minmax(130px, 180px) 1fr; gap: 0; margin: 0; border: 1px solid #e5ebf2; border-bottom: 0; }
+    .spec-grid dt, .spec-grid dd { margin: 0; padding: 6px 8px; border-bottom: 1px solid #e5ebf2; font-size: 13px; }
+    .spec-grid dt { background: #f7f9fb; font-weight: 700; color: #475467; }
+    details { margin-top: 9px; }
+    summary { cursor: pointer; color: #344054; font-size: 13px; font-weight: 700; }
+    .run-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 12px; }
+    .run-table th, .run-table td { border: 1px solid #e5ebf2; padding: 5px 6px; vertical-align: top; }
+    .run-table th { background: #eef2f6; }
+    .legend { position: sticky; top: 14px; }
+    .legend-row { display: grid; grid-template-columns: 22px 1fr; gap: 9px; padding: 8px 0; border-bottom: 1px solid #edf1f5; }
+    .legend-row span { width: 22px; height: 22px; border: 1px solid rgba(31,41,51,.2); border-radius: 4px; }
+    .legend-row strong { display: block; font-size: 13px; }
+    .legend-row p { margin: 2px 0 0; font-size: 13px; }
+    .review-list li { margin-bottom: 8px; }
+    @media (max-width: 980px) { main { padding: 18px 12px 36px; } .layout { grid-template-columns: 1fr; } .legend { position: static; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Vivisezione della lettera Alfa</h1>
+  <p>
+    Pagina di verifica cliente per la lettera fittizia <strong>Alfa S.p.A. / Beta Costruzioni S.r.l.</strong>,
+    generata dal formatter <code>letters</code> sopra la pagina intestata <code>Template_Vuoto.docx</code>.
+    Ogni paragrafo mostra ruolo, colore, detection rule e misure Word effettive.
+  </p>
+
+  <section class="top-grid">
+    <div class="panel">
+      <h3>Documento analizzato</h3>
+      <ul>
+        <li>Input grezzo: <code>examples/esempio_1_diffida.docx</code></li>
+        <li>DOCX formattato: <code>out/examples/esempio_1_diffida.docx</code></li>
+        <li>Report formatter: <code>out/examples/esempio_1_diffida_report.md</code></li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Pagina intestata e margini</h3>
+      <ul>
+        <li>Formato pagina: 21.0 x 29.7 cm</li>
+        <li>Margini: alto 5.91 cm, basso 4.54 cm, sinistra 2.0 cm, destra 2.0 cm</li>
+        <li>Distanze: header 1.3 cm, footer 0.6 cm</li>
+        <li>Media: <code>/word/media/image1.jpg</code></li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Da verificare col cliente</h3>
+      <ul class="review-list">
+        <li>Confermare posizione e stile di ogni blocco colorato.</li>
+        <li>Confermare margini e uso della pagina intestata.</li>
+        <li>Confermare quali placeholder generano <code>needs_review</code>.</li>
+        <li>Confermare se le regole sono valide anche per altre lettere dello studio.</li>
+      </ul>
+    </div>
+  </section>
+
+  <h2>Header e footer ereditati dal template</h2>
+  <section class="top-grid">
+    <div class="panel"><h3>Header</h3><ul><li>BERGAMO LEGAL</li><li>Società tra Avvocati s.r.l.</li><li>www.bergamo.legal</li><li>Avv. Matteo Bertocchi</li><li>Avv. Daiana Chiappa </li></ul></div>
+    <div class="panel"><h3>Footer</h3><ul><li>R.E.A. BG 472665 - Capitale Sociale € 100.000 (versato € 75.000) - C.F. e P.IVA 04565220169</li><li>Iscritta all’Ordine degli Avvocati di Bergamo con il n. 14</li><li>+39 351 83 13 103		info@bergamo.legal</li><li>+39 035 29 03 53		bergamo.legal@ultracert.it</li><li>+39 035 21 76 14	Via Fratelli Calvi 10E - BERGAMO (24122 BG) - IT</li><li>	Via Montenapoleone 8 - MILANO (20121 MI) - IT</li></ul></div>
+    <div class="panel"><h3>Regola</h3><p>Header/footer/logo non sono blocchi del corpo: vengono ereditati dal template e non devono essere ricreati dall'AI.</p></div>
+  </section>
+
+  <h2>Paragrafi del corpo, sezionati e misurati</h2>
+  <div class="layout">
+    <section class="letter-stack" aria-label="Paragrafi sezionati">
+
+      <article class="para-card" style="--role-color: #d7f3ec">
+        <div class="para-number">P00</div>
+        <div class="para-body">
+          <div class="para-meta"><strong>delivery</strong> · Mezzo di invio</div>
+          <p class="para-text">A mezzo Raccomandata A/R, anticipata via email</p>
+          <dl class="spec-grid"><dt>Ruolo</dt><dd>Mezzo di invio</dd><dt>Detection</dt><dd>Prima riga del preambolo; pattern delivery_method.</dd><dt>Allineamento</dt><dd>RIGHT</dd><dt>Font dominante</dt><dd>Times New Roman</dd><dt>Dimensione dominante</dt><dd>12.0 pt</dd><dt>Bold dominante</dt><dd>no</dd><dt>Italic dominante</dt><dd>yes</dd><dt>Rientro sx</dt><dd>-</dd><dt>Rientro dx</dt><dd>-</dd><dt>Prima riga</dt><dd>-</dd><dt>Spazio prima</dt><dd>0.0 pt</dd><dt>Spazio dopo</dt><dd>2.0 pt</dd><dt>Interlinea</dt><dd>-</dd><dt>Keep with next</dt><dd>no</dd><dt>Keep together</dt><dd>no</dd><dt>Da confermare</dt><dd>Confermare allineamento a destra e corsivo.</dd></dl>
+          <details>
+            <summary>Run interni e formattazione mista</summary>
+            <table class="run-table"><thead><tr><th>#</th><th>Testo run</th><th>Font</th><th>Size</th><th>Bold</th><th>Italic</th><th>Underline</th></tr></thead><tbody><tr><td>1</td><td>A mezzo Raccomandata A/R, anticipata via email</td><td>Times New Roman</td><td>12.0 pt</td><td>no</td><td>yes</td><td>-</td></tr></tbody></table>
+          </details>
+        </div>
+      </article>
+    
+
+      <article class="para-card" style="--role-color: #fff0bf">
+        <div class="para-number">P01</div>
+        <div class="para-body">
+          <div class="para-meta"><strong>date</strong> · Luogo e data</div>
+          <p class="para-text">Bergamo, lì [DA INSERIRE: data]</p>
+          <dl class="spec-grid"><dt>Ruolo</dt><dd>Luogo e data</dd><dt>Detection</dt><dd>Preambolo breve con luogo + data/placeholder.</dd><dt>Allineamento</dt><dd>RIGHT</dd><dt>Font dominante</dt><dd>Times New Roman</dd><dt>Dimensione dominante</dt><dd>12.0 pt</dd><dt>Bold dominante</dt><dd>no</dd><dt>Italic dominante</dt><dd>no</dd><dt>Rientro sx</dt><dd>-</dd><dt>Rientro dx</dt><dd>-</dd><dt>Prima riga</dt><dd>-</dd><dt>Spazio prima</dt><dd>6.0 pt</dd><dt>Spazio dopo</dt><dd>10.0 pt</dd><dt>Interlinea</dt><dd>-</dd><dt>Keep with next</dt><dd>no</dd><dt>Keep together</dt><dd>no</dd><dt>Da confermare</dt><dd>Confermare posizione a destra e gestione placeholder.</dd></dl>
+          <details>
+            <summary>Run interni e formattazione mista</summary>
+            <table class="run-table"><thead><tr><th>#</th><th>Testo run</th><th>Font</th><th>Size</th><th>Bold</th><th>Italic</th><th>Underline</th></tr></thead><tbody><tr><td>1</td><td>Bergamo, lì </td><td>Times New Roman</td><td>12.0 pt</td><td>no</td><td>no</td><td>-</td></tr><tr><td>2</td><td>[DA INSERIRE: data]</td><td>Times New Roman</td><td>12.0 pt</td><td>yes</td><td>no</td><td>-</td></tr></tbody></table>
+          </details>
+        </div>
+      </article>
+    
+
+      <article class="para-card" style="--role-color: #fde1d9">
+        <div class="para-number">P02</div>
+        <div class="para-body">
+          <div class="para-meta"><strong>recipient</strong> · Destinatario - nome</div>
+          <p class="para-text">Spett.le Beta Costruzioni S.r.l.</p>
+          <dl class="spec-grid"><dt>Ruolo</dt><dd>Destinatario - nome</dd><dt>Detection</dt><dd>Recipient block prima di OGGETTO; onorifico fuso col nome.</dd><dt>Allineamento</dt><dd>LEFT</dd><dt>Font dominante</dt><dd>Times New Roman</dd><dt>Dimensione dominante</dt><dd>12.0 pt</dd><dt>Bold dominante</dt><dd>yes</dd><dt>Italic dominante</dt><dd>no</dd><dt>Rientro sx</dt><dd>8.5 cm</dd><dt>Rientro dx</dt><dd>-</dd><dt>Prima riga</dt><dd>-</dd><dt>Spazio prima</dt><dd>0.0 pt</dd><dt>Spazio dopo</dt><dd>2.0 pt</dd><dt>Interlinea</dt><dd>-</dd><dt>Keep with next</dt><dd>no</dd><dt>Keep together</dt><dd>no</dd><dt>Da confermare</dt><dd>Confermare rientro dal centro pagina e grassetto sul nome.</dd></dl>
+          <details>
+            <summary>Run interni e formattazione mista</summary>
+            <table class="run-table"><thead><tr><th>#</th><th>Testo run</th><th>Font</th><th>Size</th><th>Bold</th><th>Italic</th><th>Underline</th></tr></thead><tbody><tr><td>1</td><td>Spett.le Beta Costruzioni S.r.l.</td><td>Times New Roman</td><td>12.0 pt</td><td>yes</td><td>no</td><td>-</td></tr></tbody></table>
+          </details>
+        </div>
+      </article>
+    
+
+      <article class="para-card" style="--role-color: #fde1d9">
+        <div class="para-number">P03</div>
+        <div class="para-body">
+          <div class="para-meta"><strong>recipient</strong> · Destinatario - indirizzo</div>
+          <p class="para-text">Via Roma, 12 - 24100 Bergamo (BG)</p>
+          <dl class="spec-grid"><dt>Ruolo</dt><dd>Destinatario - indirizzo</dd><dt>Detection</dt><dd>Continuazione recipient block.</dd><dt>Allineamento</dt><dd>LEFT</dd><dt>Font dominante</dt><dd>Times New Roman</dd><dt>Dimensione dominante</dt><dd>12.0 pt</dd><dt>Bold dominante</dt><dd>no</dd><dt>Italic dominante</dt><dd>no</dd><dt>Rientro sx</dt><dd>8.5 cm</dd><dt>Rientro dx</dt><dd>-</dd><dt>Prima riga</dt><dd>-</dd><dt>Spazio prima</dt><dd>0.0 pt</dd><dt>Spazio dopo</dt><dd>2.0 pt</dd><dt>Interlinea</dt><dd>-</dd><dt>Keep with next</dt><dd>no</dd><dt>Keep together</dt><dd>no</dd><dt>Da confermare</dt><dd>Confermare rientro e assenza di grassetto.</dd></dl>
+          <details>
+            <summary>Run interni e formattazione mista</summary>
+            <table class="run-table"><thead><tr><th>#</th><th>Testo run</th><th>Font</th><th>Size</th><th>Bold</th><th>Italic</th><th>Underline</th></tr></thead><tbody><tr><td>1</td><td>Via Roma, 12 - 24100 Bergamo (BG)</td><td>Times New Roman</td><td>12.0 pt</td><td>no</td><td>no</td><td>-</td></tr></tbody></table>
+          </details>
+        </div>
+      </article>
+    
+
+      <article class="para-card" style="--role-color: #fde1d9">
+        <div class="para-number">P04</div>
+        <div class="para-body">
+          <div class="para-meta"><strong>recipient</strong> · Destinatario - PEC</div>
+          <p class="para-text">PEC: beta.costruzioni@pec.it</p>
+          <dl class="spec-grid"><dt>Ruolo</dt><dd>Destinatario - PEC</dd><dt>Detection</dt><dd>Continuazione recipient block / recapito.</dd><dt>Allineamento</dt><dd>LEFT</dd><dt>Font dominante</dt><dd>Times New Roman</dd><dt>Dimensione dominante</dt><dd>12.0 pt</dd><dt>Bold dominante</dt><dd>no</dd><dt>Italic dominante</dt><dd>no</dd><dt>Rientro sx</dt><dd>8.5 cm</dd><dt>Rientro dx</dt><dd>-</dd><dt>Prima riga</dt><dd>-</dd><dt>Spazio prima</dt><dd>0.0 pt</dd><dt>Spazio dopo</dt><dd>8.0 pt</dd><dt>Interlinea</dt><dd>-</dd><dt>Keep with next</dt><dd>no</dd><dt>Keep together</dt><dd>no</dd><dt>Da confermare</dt><dd>Confermare spazio finale del blocco destinatario.</dd></dl>
+          <details>
+            <summary>Run interni e formattazione mista</summary>
+            <table class="run-table"><thead><tr><th>#</th><th>Testo run</th><th>Font</th><th>Size</th><th>Bold</th><th>Italic</th><th>Underline</th></tr></thead><tbody><tr><td>1</td><td>PEC: beta.costruzioni@pec.it</td><td>Times New Roman</td><td>12.0 pt</td><td>no</td><td>no</td><td>-</td></tr></tbody></table>
+          </details>
+        </div>
+      </article>
+    
+
+      <article class="para-card" style="--role-color: #dfe5ff">
+        <div class="para-number">P05</div>
+        <div class="para-body">
+          <div class="para-meta"><strong>subject</strong> · Oggetto</div>
+          <p class="para-text">OGGETTO: Diffida ad adempiere - pagamento fatture insolute n. 14/2026 e n. 21/2026</p>
+          <dl class="spec-grid"><dt>Ruolo</dt><dd>Oggetto</dd><dt>Detection</dt><dd>Ancora strutturale OGGETTO.</dd><dt>Allineamento</dt><dd>JUSTIFY</dd><dt>Font dominante</dt><dd>Times New Roman</dd><dt>Dimensione dominante</dt><dd>16.0 pt</dd><dt>Bold dominante</dt><dd>yes</dd><dt>Italic dominante</dt><dd>no</dd><dt>Rientro sx</dt><dd>-</dd><dt>Rientro dx</dt><dd>-</dd><dt>Prima riga</dt><dd>-</dd><dt>Spazio prima</dt><dd>8.0 pt</dd><dt>Spazio dopo</dt><dd>8.0 pt</dd><dt>Interlinea</dt><dd>-</dd><dt>Keep with next</dt><dd>yes</dd><dt>Keep together</dt><dd>no</dd><dt>Da confermare</dt><dd>Confermare etichetta 16 pt + contenuto 12 pt nello stesso paragrafo.</dd></dl>
+          <details>
+            <summary>Run interni e formattazione mista</summary>
+            <table class="run-table"><thead><tr><th>#</th><th>Testo run</th><th>Font</th><th>Size</th><th>Bold</th><th>Italic</th><th>Underline</th></tr></thead><tbody><tr><td>1</td><td>OGGETTO:</td><td>Times New Roman</td><td>16.0 pt</td><td>yes</td><td>no</td><td>-</td></tr><tr><td>2</td><td> Diffida ad adempiere - pagamento fatture insolute n. 14/2026 e n. 21/2026</td><td>Times New Roman</td><td>12.0 pt</td><td>yes</td><td>no</td><td>-</td></tr></tbody></table>
+          </details>
+        </div>
+      </article>
+    
+
+      <article class="para-card" style="--role-color: #efe3ff">
+        <div class="para-number">P06</div>
+        <div class="para-body">
+          <div class="para-meta"><strong>opening</strong> · Formula di apertura</div>
+          <p class="para-text">Egregi Signori,</p>
+          <dl class="spec-grid"><dt>Ruolo</dt><dd>Formula di apertura</dd><dt>Detection</dt><dd>Prima riga del corpo dopo OGGETTO.</dd><dt>Allineamento</dt><dd>JUSTIFY</dd><dt>Font dominante</dt><dd>Times New Roman</dd><dt>Dimensione dominante</dt><dd>12.0 pt</dd><dt>Bold dominante</dt><dd>no</dd><dt>Italic dominante</dt><dd>no</dd><dt>Rientro sx</dt><dd>-</dd><dt>Rientro dx</dt><dd>-</dd><dt>Prima riga</dt><dd>-</dd><dt>Spazio prima</dt><dd>0.0 pt</dd><dt>Spazio dopo</dt><dd>6.0 pt</dd><dt>Interlinea</dt><dd>-</dd><dt>Keep with next</dt><dd>no</dd><dt>Keep together</dt><dd>no</dd><dt>Da confermare</dt><dd>Confermare se deve essere giustificata o sinistra.</dd></dl>
+          <details>
+            <summary>Run interni e formattazione mista</summary>
+            <table class="run-table"><thead><tr><th>#</th><th>Testo run</th><th>Font</th><th>Size</th><th>Bold</th><th>Italic</th><th>Underline</th></tr></thead><tbody><tr><td>1</td><td>Egregi Signori,</td><td>Times New Roman</td><td>12.0 pt</td><td>no</td><td>no</td><td>-</td></tr></tbody></table>
+          </details>
+        </div>
+      </article>
+    
+
+      <article class="para-card" style="--role-color: #eef7df">
+        <div class="para-number">P07</div>
+        <div class="para-body">
+          <div class="para-meta"><strong>body</strong> · Corpo - premessa</div>
+          <p class="para-text">lo Studio scrivente agisce in nome e per conto della Alfa S.p.A. in relazione ai fatti che seguono.</p>
+          <dl class="spec-grid"><dt>Ruolo</dt><dd>Corpo - premessa</dd><dt>Detection</dt><dd>Default body paragraph.</dd><dt>Allineamento</dt><dd>JUSTIFY</dd><dt>Font dominante</dt><dd>Times New Roman</dd><dt>Dimensione dominante</dt><dd>12.0 pt</dd><dt>Bold dominante</dt><dd>no</dd><dt>Italic dominante</dt><dd>no</dd><dt>Rientro sx</dt><dd>-</dd><dt>Rientro dx</dt><dd>-</dd><dt>Prima riga</dt><dd>-</dd><dt>Spazio prima</dt><dd>0.0 pt</dd><dt>Spazio dopo</dt><dd>6.0 pt</dd><dt>Interlinea</dt><dd>-</dd><dt>Keep with next</dt><dd>no</dd><dt>Keep together</dt><dd>no</dd><dt>Da confermare</dt><dd>Confermare font, giustificazione e spaziatura.</dd></dl>
+          <details>
+            <summary>Run interni e formattazione mista</summary>
+            <table class="run-table"><thead><tr><th>#</th><th>Testo run</th><th>Font</th><th>Size</th><th>Bold</th><th>Italic</th><th>Underline</th></tr></thead><tbody><tr><td>1</td><td>lo Studio scrivente agisce in nome e per conto della Alfa S.p.A. in relazione ai fatti ...</td><td>Times New Roman</td><td>12.0 pt</td><td>no</td><td>no</td><td>-</td></tr></tbody></table>
+          </details>
+        </div>
+      </article>
+    
+
+      <article class="para-card" style="--role-color: #f7e6c6">
+        <div class="para-number">P08</div>
+        <div class="para-body">
+          <div class="para-meta"><strong>section_left</strong> · Sezione sinistra</div>
+          <p class="para-text">Fatto</p>
+          <dl class="spec-grid"><dt>Ruolo</dt><dd>Sezione sinistra</dd><dt>Detection</dt><dd>Titolo breve Fatto/Diritto.</dd><dt>Allineamento</dt><dd>LEFT</dd><dt>Font dominante</dt><dd>Times New Roman</dd><dt>Dimensione dominante</dt><dd>14.0 pt</dd><dt>Bold dominante</dt><dd>yes</dd><dt>Italic dominante</dt><dd>no</dd><dt>Rientro sx</dt><dd>-</dd><dt>Rientro dx</dt><dd>-</dd><dt>Prima riga</dt><dd>-</dd><dt>Spazio prima</dt><dd>12.0 pt</dd><dt>Spazio dopo</dt><dd>6.0 pt</dd><dt>Interlinea</dt><dd>-</dd><dt>Keep with next</dt><dd>yes</dd><dt>Keep together</dt><dd>no</dd><dt>Da confermare</dt><dd>Confermare 14 pt bold, keep_with_next.</dd></dl>
+          <details>
+            <summary>Run interni e formattazione mista</summary>
+            <table class="run-table"><thead><tr><th>#</th><th>Testo run</th><th>Font</th><th>Size</th><th>Bold</th><th>Italic</th><th>Underline</th></tr></thead><tbody><tr><td>1</td><td>Fatto</td><td>Times New Roman</td><td>14.0 pt</td><td>yes</td><td>no</td><td>-</td></tr></tbody></table>
+          </details>
+        </div>
+      </article>
+    
+
+      <article class="para-card" style="--role-color: #d8ecff">
+        <div class="para-number">P09</div>
+        <div class="para-body">
+          <div class="para-meta"><strong>numbered</strong> · Paragrafo numerato</div>
+          <p class="para-text">1. In data 3 marzo 2026 la Alfa S.p.A. emetteva regolare fattura n. 14/2026 per l&#x27;importo di € 12.500,00.</p>
+          <dl class="spec-grid"><dt>Ruolo</dt><dd>Paragrafo numerato</dd><dt>Detection</dt><dd>Pattern N. testo.</dd><dt>Allineamento</dt><dd>JUSTIFY</dd><dt>Font dominante</dt><dd>Times New Roman</dd><dt>Dimensione dominante</dt><dd>12.0 pt</dd><dt>Bold dominante</dt><dd>yes</dd><dt>Italic dominante</dt><dd>no</dd><dt>Rientro sx</dt><dd>-</dd><dt>Rientro dx</dt><dd>-</dd><dt>Prima riga</dt><dd>-</dd><dt>Spazio prima</dt><dd>0.0 pt</dd><dt>Spazio dopo</dt><dd>6.0 pt</dd><dt>Interlinea</dt><dd>-</dd><dt>Keep with next</dt><dd>no</dd><dt>Keep together</dt><dd>no</dd><dt>Da confermare</dt><dd>Confermare prefisso numero in grassetto.</dd></dl>
+          <details>
+            <summary>Run interni e formattazione mista</summary>
+            <table class="run-table"><thead><tr><th>#</th><th>Testo run</th><th>Font</th><th>Size</th><th>Bold</th><th>Italic</th><th>Underline</th></tr></thead><tbody><tr><td>1</td><td>1. </td><td>Times New Roman</td><td>12.0 pt</td><td>yes</td><td>no</td><td>-</td></tr><tr><td>2</td><td>In data 3 marzo 2026 la Alfa S.p.A. emetteva regolare fattura n. 14/2026 per l&#x27;imp...</td><td>Times New Roman</td><td>12.0 pt</td><td>no</td><td>no</td><td>-</td></tr></tbody></table>
+          </details>
+        </div>
+      </article>
+    
+
+      <article class="para-card" style="--role-color: #d8ecff">
+        <div class="para-number">P10</div>
+        <div class="para-body">
+          <div class="para-meta"><strong>numbered</strong> · Paragrafo numerato</div>
+          <p class="para-text">2. Nonostante i solleciti, la S.V. non ha provveduto al pagamento delle seguenti fatture:</p>
+          <dl class="spec-grid"><dt>Ruolo</dt><dd>Paragrafo numerato</dd><dt>Detection</dt><dd>Pattern N. testo.</dd><dt>Allineamento</dt><dd>JUSTIFY</dd><dt>Font dominante</dt><dd>Times New Roman</dd><dt>Dimensione dominante</dt><dd>12.0 pt</dd><dt>Bold dominante</dt><dd>yes</dd><dt>Italic dominante</dt><dd>no</dd><dt>Rientro sx</dt><dd>-</dd><dt>Rientro dx</dt><dd>-</dd><dt>Prima riga</dt><dd>-</dd><dt>Spazio prima</dt><dd>0.0 pt</dd><dt>Spazio dopo</dt><dd>6.0 pt</dd><dt>Interlinea</dt><dd>-</dd><dt>Keep with next</dt><dd>no</dd><dt>Keep together</dt><dd>no</dd><dt>Da confermare</dt><dd>Confermare prefisso numero in grassetto.</dd></dl>
+          <details>
+            <summary>Run interni e formattazione mista</summary>
+            <table class="run-table"><thead><tr><th>#</th><th>Testo run</th><th>Font</th><th>Size</th><th>Bold</th><th>Italic</th><th>Underline</th></tr></thead><tbody><tr><td>1</td><td>2. </td><td>Times New Roman</td><td>12.0 pt</td><td>yes</td><td>no</td><td>-</td></tr><tr><td>2</td><td>Nonostante i solleciti, la S.V. non ha provveduto al pagamento delle seguenti fatture:</td><td>Times New Roman</td><td>12.0 pt</td><td>no</td><td>no</td><td>-</td></tr></tbody></table>
+          </details>
+        </div>
+      </article>
+    
+
+      <article class="para-card" style="--role-color: #dff7ff">
+        <div class="para-number">P11</div>
+        <div class="para-body">
+          <div class="para-meta"><strong>enum</strong> · Sotto-elenco</div>
+          <p class="para-text">(i) fattura n. 14/2026, scaduta il 2 aprile 2026;</p>
+          <dl class="spec-grid"><dt>Ruolo</dt><dd>Sotto-elenco</dd><dt>Detection</dt><dd>Pattern (i) / (ii).</dd><dt>Allineamento</dt><dd>JUSTIFY</dd><dt>Font dominante</dt><dd>Times New Roman</dd><dt>Dimensione dominante</dt><dd>12.0 pt</dd><dt>Bold dominante</dt><dd>no</dd><dt>Italic dominante</dt><dd>no</dd><dt>Rientro sx</dt><dd>0.5 cm</dd><dt>Rientro dx</dt><dd>-</dd><dt>Prima riga</dt><dd>-</dd><dt>Spazio prima</dt><dd>0.0 pt</dd><dt>Spazio dopo</dt><dd>4.0 pt</dd><dt>Interlinea</dt><dd>-</dd><dt>Keep with next</dt><dd>no</dd><dt>Keep together</dt><dd>no</dd><dt>Da confermare</dt><dd>Confermare rientro 0.5 cm.</dd></dl>
+          <details>
+            <summary>Run interni e formattazione mista</summary>
+            <table class="run-table"><thead><tr><th>#</th><th>Testo run</th><th>Font</th><th>Size</th><th>Bold</th><th>Italic</th><th>Underline</th></tr></thead><tbody><tr><td>1</td><td>(i) fattura n. 14/2026, scaduta il 2 aprile 2026;</td><td>Times New Roman</td><td>12.0 pt</td><td>no</td><td>no</td><td>-</td></tr></tbody></table>
+          </details>
+        </div>
+      </article>
+    
+
+      <article class="para-card" style="--role-color: #dff7ff">
+        <div class="para-number">P12</div>
+        <div class="para-body">
+          <div class="para-meta"><strong>enum</strong> · Sotto-elenco</div>
+          <p class="para-text">(ii) fattura n. 21/2026, scaduta il 30 aprile 2026.</p>
+          <dl class="spec-grid"><dt>Ruolo</dt><dd>Sotto-elenco</dd><dt>Detection</dt><dd>Pattern (i) / (ii).</dd><dt>Allineamento</dt><dd>JUSTIFY</dd><dt>Font dominante</dt><dd>Times New Roman</dd><dt>Dimensione dominante</dt><dd>12.0 pt</dd><dt>Bold dominante</dt><dd>no</dd><dt>Italic dominante</dt><dd>no</dd><dt>Rientro sx</dt><dd>0.5 cm</dd><dt>Rientro dx</dt><dd>-</dd><dt>Prima riga</dt><dd>-</dd><dt>Spazio prima</dt><dd>0.0 pt</dd><dt>Spazio dopo</dt><dd>4.0 pt</dd><dt>Interlinea</dt><dd>-</dd><dt>Keep with next</dt><dd>no</dd><dt>Keep together</dt><dd>no</dd><dt>Da confermare</dt><dd>Confermare rientro 0.5 cm.</dd></dl>
+          <details>
+            <summary>Run interni e formattazione mista</summary>
+            <table class="run-table"><thead><tr><th>#</th><th>Testo run</th><th>Font</th><th>Size</th><th>Bold</th><th>Italic</th><th>Underline</th></tr></thead><tbody><tr><td>1</td><td>(ii) fattura n. 21/2026, scaduta il 30 aprile 2026.</td><td>Times New Roman</td><td>12.0 pt</td><td>no</td><td>no</td><td>-</td></tr></tbody></table>
+          </details>
+        </div>
+      </article>
+    
+
+      <article class="para-card" style="--role-color: #f7e6c6">
+        <div class="para-number">P13</div>
+        <div class="para-body">
+          <div class="para-meta"><strong>section_left</strong> · Sezione sinistra</div>
+          <p class="para-text">Diritto</p>
+          <dl class="spec-grid"><dt>Ruolo</dt><dd>Sezione sinistra</dd><dt>Detection</dt><dd>Titolo breve Fatto/Diritto.</dd><dt>Allineamento</dt><dd>LEFT</dd><dt>Font dominante</dt><dd>Times New Roman</dd><dt>Dimensione dominante</dt><dd>14.0 pt</dd><dt>Bold dominante</dt><dd>yes</dd><dt>Italic dominante</dt><dd>no</dd><dt>Rientro sx</dt><dd>-</dd><dt>Rientro dx</dt><dd>-</dd><dt>Prima riga</dt><dd>-</dd><dt>Spazio prima</dt><dd>12.0 pt</dd><dt>Spazio dopo</dt><dd>6.0 pt</dd><dt>Interlinea</dt><dd>-</dd><dt>Keep with next</dt><dd>yes</dd><dt>Keep together</dt><dd>no</dd><dt>Da confermare</dt><dd>Confermare 14 pt bold, keep_with_next.</dd></dl>
+          <details>
+            <summary>Run interni e formattazione mista</summary>
+            <table class="run-table"><thead><tr><th>#</th><th>Testo run</th><th>Font</th><th>Size</th><th>Bold</th><th>Italic</th><th>Underline</th></tr></thead><tbody><tr><td>1</td><td>Diritto</td><td>Times New Roman</td><td>14.0 pt</td><td>yes</td><td>no</td><td>-</td></tr></tbody></table>
+          </details>
+        </div>
+      </article>
+    
+
+      <article class="para-card" style="--role-color: #d8ecff">
+        <div class="para-number">P14</div>
+        <div class="para-body">
+          <div class="para-meta"><strong>numbered</strong> · Paragrafo numerato</div>
+          <p class="para-text">3. L&#x27;inadempimento integra una grave violazione degli artt. 1218 e 1453 c.c.</p>
+          <dl class="spec-grid"><dt>Ruolo</dt><dd>Paragrafo numerato</dd><dt>Detection</dt><dd>Pattern N. testo.</dd><dt>Allineamento</dt><dd>JUSTIFY</dd><dt>Font dominante</dt><dd>Times New Roman</dd><dt>Dimensione dominante</dt><dd>12.0 pt</dd><dt>Bold dominante</dt><dd>yes</dd><dt>Italic dominante</dt><dd>no</dd><dt>Rientro sx</dt><dd>-</dd><dt>Rientro dx</dt><dd>-</dd><dt>Prima riga</dt><dd>-</dd><dt>Spazio prima</dt><dd>0.0 pt</dd><dt>Spazio dopo</dt><dd>6.0 pt</dd><dt>Interlinea</dt><dd>-</dd><dt>Keep with next</dt><dd>no</dd><dt>Keep together</dt><dd>no</dd><dt>Da confermare</dt><dd>Confermare prefisso numero in grassetto.</dd></dl>
+          <details>
+            <summary>Run interni e formattazione mista</summary>
+            <table class="run-table"><thead><tr><th>#</th><th>Testo run</th><th>Font</th><th>Size</th><th>Bold</th><th>Italic</th><th>Underline</th></tr></thead><tbody><tr><td>1</td><td>3. </td><td>Times New Roman</td><td>12.0 pt</td><td>yes</td><td>no</td><td>-</td></tr><tr><td>2</td><td>L&#x27;inadempimento integra una grave violazione degli artt. 1218 e 1453 c.c.</td><td>Times New Roman</td><td>12.0 pt</td><td>no</td><td>no</td><td>-</td></tr></tbody></table>
+          </details>
+        </div>
+      </article>
+    
+
+      <article class="para-card" style="--role-color: #eef7df">
+        <div class="para-number">P15</div>
+        <div class="para-body">
+          <div class="para-meta"><strong>body</strong> · Formula transizione</div>
+          <p class="para-text">Tutto ciò premesso e considerato, lo Studio scrivente</p>
+          <dl class="spec-grid"><dt>Ruolo</dt><dd>Formula transizione</dd><dt>Detection</dt><dd>Default body paragraph.</dd><dt>Allineamento</dt><dd>JUSTIFY</dd><dt>Font dominante</dt><dd>Times New Roman</dd><dt>Dimensione dominante</dt><dd>12.0 pt</dd><dt>Bold dominante</dt><dd>no</dd><dt>Italic dominante</dt><dd>no</dd><dt>Rientro sx</dt><dd>-</dd><dt>Rientro dx</dt><dd>-</dd><dt>Prima riga</dt><dd>-</dd><dt>Spazio prima</dt><dd>0.0 pt</dd><dt>Spazio dopo</dt><dd>6.0 pt</dd><dt>Interlinea</dt><dd>-</dd><dt>Keep with next</dt><dd>no</dd><dt>Keep together</dt><dd>no</dd><dt>Da confermare</dt><dd>Confermare se resta body o diventa formula speciale.</dd></dl>
+          <details>
+            <summary>Run interni e formattazione mista</summary>
+            <table class="run-table"><thead><tr><th>#</th><th>Testo run</th><th>Font</th><th>Size</th><th>Bold</th><th>Italic</th><th>Underline</th></tr></thead><tbody><tr><td>1</td><td>Tutto ciò premesso e considerato, lo Studio scrivente</td><td>Times New Roman</td><td>12.0 pt</td><td>no</td><td>no</td><td>-</td></tr></tbody></table>
+          </details>
+        </div>
+      </article>
+    
+
+      <article class="para-card" style="--role-color: #ffd9e8">
+        <div class="para-number">P16</div>
+        <div class="para-body">
+          <div class="para-meta"><strong>section_center</strong> · Titolo rituale centrale</div>
+          <p class="para-text">DIFFIDA</p>
+          <dl class="spec-grid"><dt>Ruolo</dt><dd>Titolo rituale centrale</dd><dt>Detection</dt><dd>Titolo rituale DIFFIDA.</dd><dt>Allineamento</dt><dd>CENTER</dd><dt>Font dominante</dt><dd>Times New Roman</dd><dt>Dimensione dominante</dt><dd>16.0 pt</dd><dt>Bold dominante</dt><dd>yes</dd><dt>Italic dominante</dt><dd>no</dd><dt>Rientro sx</dt><dd>-</dd><dt>Rientro dx</dt><dd>-</dd><dt>Prima riga</dt><dd>-</dd><dt>Spazio prima</dt><dd>14.0 pt</dd><dt>Spazio dopo</dt><dd>6.0 pt</dd><dt>Interlinea</dt><dd>-</dd><dt>Keep with next</dt><dd>yes</dd><dt>Keep together</dt><dd>yes</dd><dt>Da confermare</dt><dd>Confermare 16 pt bold, centrato, keep_together.</dd></dl>
+          <details>
+            <summary>Run interni e formattazione mista</summary>
+            <table class="run-table"><thead><tr><th>#</th><th>Testo run</th><th>Font</th><th>Size</th><th>Bold</th><th>Italic</th><th>Underline</th></tr></thead><tbody><tr><td>1</td><td>DIFFIDA</td><td>Times New Roman</td><td>16.0 pt</td><td>yes</td><td>no</td><td>-</td></tr></tbody></table>
+          </details>
+        </div>
+      </article>
+    
+
+      <article class="para-card" style="--role-color: #eef7df">
+        <div class="para-number">P17</div>
+        <div class="para-body">
+          <div class="para-meta"><strong>body</strong> · Corpo - intimazione</div>
+          <p class="para-text">la S.V., come sopra individuata, a voler provvedere entro 15 giorni al pagamento di quanto dovuto.</p>
+          <dl class="spec-grid"><dt>Ruolo</dt><dd>Corpo - intimazione</dd><dt>Detection</dt><dd>Default body paragraph.</dd><dt>Allineamento</dt><dd>JUSTIFY</dd><dt>Font dominante</dt><dd>Times New Roman</dd><dt>Dimensione dominante</dt><dd>12.0 pt</dd><dt>Bold dominante</dt><dd>no</dd><dt>Italic dominante</dt><dd>no</dd><dt>Rientro sx</dt><dd>-</dd><dt>Rientro dx</dt><dd>-</dd><dt>Prima riga</dt><dd>-</dd><dt>Spazio prima</dt><dd>0.0 pt</dd><dt>Spazio dopo</dt><dd>6.0 pt</dd><dt>Interlinea</dt><dd>-</dd><dt>Keep with next</dt><dd>no</dd><dt>Keep together</dt><dd>no</dd><dt>Da confermare</dt><dd>Confermare body standard.</dd></dl>
+          <details>
+            <summary>Run interni e formattazione mista</summary>
+            <table class="run-table"><thead><tr><th>#</th><th>Testo run</th><th>Font</th><th>Size</th><th>Bold</th><th>Italic</th><th>Underline</th></tr></thead><tbody><tr><td>1</td><td>la S.V., come sopra individuata, a voler provvedere entro 15 giorni al pagamento di qua...</td><td>Times New Roman</td><td>12.0 pt</td><td>no</td><td>no</td><td>-</td></tr></tbody></table>
+          </details>
+        </div>
+      </article>
+    
+
+      <article class="para-card" style="--role-color: #eef7df">
+        <div class="para-number">P18</div>
+        <div class="para-body">
+          <div class="para-meta"><strong>body</strong> · Corpo - conseguenza</div>
+          <p class="para-text">In difetto, si procederà nelle competenti sedi giudiziarie con aggravio di spese.</p>
+          <dl class="spec-grid"><dt>Ruolo</dt><dd>Corpo - conseguenza</dd><dt>Detection</dt><dd>Default body paragraph.</dd><dt>Allineamento</dt><dd>JUSTIFY</dd><dt>Font dominante</dt><dd>Times New Roman</dd><dt>Dimensione dominante</dt><dd>12.0 pt</dd><dt>Bold dominante</dt><dd>no</dd><dt>Italic dominante</dt><dd>no</dd><dt>Rientro sx</dt><dd>-</dd><dt>Rientro dx</dt><dd>-</dd><dt>Prima riga</dt><dd>-</dd><dt>Spazio prima</dt><dd>0.0 pt</dd><dt>Spazio dopo</dt><dd>6.0 pt</dd><dt>Interlinea</dt><dd>-</dd><dt>Keep with next</dt><dd>no</dd><dt>Keep together</dt><dd>no</dd><dt>Da confermare</dt><dd>Confermare body standard.</dd></dl>
+          <details>
+            <summary>Run interni e formattazione mista</summary>
+            <table class="run-table"><thead><tr><th>#</th><th>Testo run</th><th>Font</th><th>Size</th><th>Bold</th><th>Italic</th><th>Underline</th></tr></thead><tbody><tr><td>1</td><td>In difetto, si procederà nelle competenti sedi giudiziarie con aggravio di spese.</td><td>Times New Roman</td><td>12.0 pt</td><td>no</td><td>no</td><td>-</td></tr></tbody></table>
+          </details>
+        </div>
+      </article>
+    
+
+      <article class="para-card" style="--role-color: #ffe5c8">
+        <div class="para-number">P19</div>
+        <div class="para-body">
+          <div class="para-meta"><strong>closing</strong> · Chiusura</div>
+          <p class="para-text">In attesa di un cortese e sollecito riscontro, si porgono distinti saluti.</p>
+          <dl class="spec-grid"><dt>Ruolo</dt><dd>Chiusura</dd><dt>Detection</dt><dd>Formula di chiusura.</dd><dt>Allineamento</dt><dd>RIGHT</dd><dt>Font dominante</dt><dd>Times New Roman</dd><dt>Dimensione dominante</dt><dd>12.0 pt</dd><dt>Bold dominante</dt><dd>no</dd><dt>Italic dominante</dt><dd>yes</dd><dt>Rientro sx</dt><dd>-</dd><dt>Rientro dx</dt><dd>-</dd><dt>Prima riga</dt><dd>-</dd><dt>Spazio prima</dt><dd>12.0 pt</dd><dt>Spazio dopo</dt><dd>4.0 pt</dd><dt>Interlinea</dt><dd>-</dd><dt>Keep with next</dt><dd>no</dd><dt>Keep together</dt><dd>no</dd><dt>Da confermare</dt><dd>Confermare destra e corsivo.</dd></dl>
+          <details>
+            <summary>Run interni e formattazione mista</summary>
+            <table class="run-table"><thead><tr><th>#</th><th>Testo run</th><th>Font</th><th>Size</th><th>Bold</th><th>Italic</th><th>Underline</th></tr></thead><tbody><tr><td>1</td><td>In attesa di un cortese e sollecito riscontro, si porgono distinti saluti.</td><td>Times New Roman</td><td>12.0 pt</td><td>no</td><td>yes</td><td>-</td></tr></tbody></table>
+          </details>
+        </div>
+      </article>
+    
+
+      <article class="para-card" style="--role-color: #f3dfc8">
+        <div class="para-number">P20</div>
+        <div class="para-body">
+          <div class="para-meta"><strong>signature</strong> · Firma</div>
+          <p class="para-text">Avv. Matteo Bertocchi</p>
+          <dl class="spec-grid"><dt>Ruolo</dt><dd>Firma</dd><dt>Detection</dt><dd>Riga Avv. in signature block.</dd><dt>Allineamento</dt><dd>RIGHT</dd><dt>Font dominante</dt><dd>Times New Roman</dd><dt>Dimensione dominante</dt><dd>12.0 pt</dd><dt>Bold dominante</dt><dd>yes</dd><dt>Italic dominante</dt><dd>no</dd><dt>Rientro sx</dt><dd>-</dd><dt>Rientro dx</dt><dd>-</dd><dt>Prima riga</dt><dd>-</dd><dt>Spazio prima</dt><dd>4.0 pt</dd><dt>Spazio dopo</dt><dd>4.0 pt</dd><dt>Interlinea</dt><dd>-</dd><dt>Keep with next</dt><dd>no</dd><dt>Keep together</dt><dd>no</dd><dt>Da confermare</dt><dd>Confermare destra e grassetto.</dd></dl>
+          <details>
+            <summary>Run interni e formattazione mista</summary>
+            <table class="run-table"><thead><tr><th>#</th><th>Testo run</th><th>Font</th><th>Size</th><th>Bold</th><th>Italic</th><th>Underline</th></tr></thead><tbody><tr><td>1</td><td>Avv. Matteo Bertocchi</td><td>Times New Roman</td><td>12.0 pt</td><td>yes</td><td>no</td><td>-</td></tr></tbody></table>
+          </details>
+        </div>
+      </article>
+    
+
+      <article class="para-card" style="--role-color: #f3dfc8">
+        <div class="para-number">P21</div>
+        <div class="para-body">
+          <div class="para-meta"><strong>signature</strong> · Firma</div>
+          <p class="para-text">Avv. Daiana Chiappa</p>
+          <dl class="spec-grid"><dt>Ruolo</dt><dd>Firma</dd><dt>Detection</dt><dd>Riga Avv. in signature block.</dd><dt>Allineamento</dt><dd>RIGHT</dd><dt>Font dominante</dt><dd>Times New Roman</dd><dt>Dimensione dominante</dt><dd>12.0 pt</dd><dt>Bold dominante</dt><dd>yes</dd><dt>Italic dominante</dt><dd>no</dd><dt>Rientro sx</dt><dd>-</dd><dt>Rientro dx</dt><dd>-</dd><dt>Prima riga</dt><dd>-</dd><dt>Spazio prima</dt><dd>4.0 pt</dd><dt>Spazio dopo</dt><dd>4.0 pt</dd><dt>Interlinea</dt><dd>-</dd><dt>Keep with next</dt><dd>no</dd><dt>Keep together</dt><dd>no</dd><dt>Da confermare</dt><dd>Confermare destra e grassetto.</dd></dl>
+          <details>
+            <summary>Run interni e formattazione mista</summary>
+            <table class="run-table"><thead><tr><th>#</th><th>Testo run</th><th>Font</th><th>Size</th><th>Bold</th><th>Italic</th><th>Underline</th></tr></thead><tbody><tr><td>1</td><td>Avv. Daiana Chiappa</td><td>Times New Roman</td><td>12.0 pt</td><td>yes</td><td>no</td><td>-</td></tr></tbody></table>
+          </details>
+        </div>
+      </article>
+    
+
+      <article class="para-card" style="--role-color: #e2e3e5">
+        <div class="para-number">P22</div>
+        <div class="para-body">
+          <div class="para-meta"><strong>attachments</strong> · Allegati - label</div>
+          <p class="para-text">Allegati:</p>
+          <dl class="spec-grid"><dt>Ruolo</dt><dd>Allegati - label</dd><dt>Detection</dt><dd>Label Allegati.</dd><dt>Allineamento</dt><dd>LEFT</dd><dt>Font dominante</dt><dd>Times New Roman</dd><dt>Dimensione dominante</dt><dd>12.0 pt</dd><dt>Bold dominante</dt><dd>yes</dd><dt>Italic dominante</dt><dd>no</dd><dt>Rientro sx</dt><dd>-</dd><dt>Rientro dx</dt><dd>-</dd><dt>Prima riga</dt><dd>-</dd><dt>Spazio prima</dt><dd>16.0 pt</dd><dt>Spazio dopo</dt><dd>4.0 pt</dd><dt>Interlinea</dt><dd>-</dd><dt>Keep with next</dt><dd>no</dd><dt>Keep together</dt><dd>no</dd><dt>Da confermare</dt><dd>Confermare spazio prima e grassetto.</dd></dl>
+          <details>
+            <summary>Run interni e formattazione mista</summary>
+            <table class="run-table"><thead><tr><th>#</th><th>Testo run</th><th>Font</th><th>Size</th><th>Bold</th><th>Italic</th><th>Underline</th></tr></thead><tbody><tr><td>1</td><td>Allegati:</td><td>Times New Roman</td><td>12.0 pt</td><td>yes</td><td>no</td><td>-</td></tr></tbody></table>
+          </details>
+        </div>
+      </article>
+    
+
+      <article class="para-card" style="--role-color: #eef0f2">
+        <div class="para-number">P23</div>
+        <div class="para-body">
+          <div class="para-meta"><strong>attachment_item</strong> · Allegato</div>
+          <p class="para-text">All. 1 - copia fattura n. 14/2026;</p>
+          <dl class="spec-grid"><dt>Ruolo</dt><dd>Allegato</dd><dt>Detection</dt><dd>Pattern All. N.</dd><dt>Allineamento</dt><dd>LEFT</dd><dt>Font dominante</dt><dd>Times New Roman</dd><dt>Dimensione dominante</dt><dd>12.0 pt</dd><dt>Bold dominante</dt><dd>no</dd><dt>Italic dominante</dt><dd>no</dd><dt>Rientro sx</dt><dd>0.5 cm</dd><dt>Rientro dx</dt><dd>-</dd><dt>Prima riga</dt><dd>-</dd><dt>Spazio prima</dt><dd>0.0 pt</dd><dt>Spazio dopo</dt><dd>3.0 pt</dd><dt>Interlinea</dt><dd>-</dd><dt>Keep with next</dt><dd>no</dd><dt>Keep together</dt><dd>no</dd><dt>Da confermare</dt><dd>Confermare rientro 0.5 cm.</dd></dl>
+          <details>
+            <summary>Run interni e formattazione mista</summary>
+            <table class="run-table"><thead><tr><th>#</th><th>Testo run</th><th>Font</th><th>Size</th><th>Bold</th><th>Italic</th><th>Underline</th></tr></thead><tbody><tr><td>1</td><td>All. 1 - copia fattura n. 14/2026;</td><td>Times New Roman</td><td>12.0 pt</td><td>no</td><td>no</td><td>-</td></tr></tbody></table>
+          </details>
+        </div>
+      </article>
+    
+
+      <article class="para-card" style="--role-color: #eef0f2">
+        <div class="para-number">P24</div>
+        <div class="para-body">
+          <div class="para-meta"><strong>attachment_item</strong> · Allegato</div>
+          <p class="para-text">All. 2 - copia fattura n. 21/2026.</p>
+          <dl class="spec-grid"><dt>Ruolo</dt><dd>Allegato</dd><dt>Detection</dt><dd>Pattern All. N.</dd><dt>Allineamento</dt><dd>LEFT</dd><dt>Font dominante</dt><dd>Times New Roman</dd><dt>Dimensione dominante</dt><dd>12.0 pt</dd><dt>Bold dominante</dt><dd>no</dd><dt>Italic dominante</dt><dd>no</dd><dt>Rientro sx</dt><dd>0.5 cm</dd><dt>Rientro dx</dt><dd>-</dd><dt>Prima riga</dt><dd>-</dd><dt>Spazio prima</dt><dd>0.0 pt</dd><dt>Spazio dopo</dt><dd>3.0 pt</dd><dt>Interlinea</dt><dd>-</dd><dt>Keep with next</dt><dd>no</dd><dt>Keep together</dt><dd>no</dd><dt>Da confermare</dt><dd>Confermare rientro 0.5 cm.</dd></dl>
+          <details>
+            <summary>Run interni e formattazione mista</summary>
+            <table class="run-table"><thead><tr><th>#</th><th>Testo run</th><th>Font</th><th>Size</th><th>Bold</th><th>Italic</th><th>Underline</th></tr></thead><tbody><tr><td>1</td><td>All. 2 - copia fattura n. 21/2026.</td><td>Times New Roman</td><td>12.0 pt</td><td>no</td><td>no</td><td>-</td></tr></tbody></table>
+          </details>
+        </div>
+      </article>
+    
+    </section>
+    <aside class="panel legend" aria-label="Legenda colori">
+      <h2>Legenda colori</h2>
+      <div class="legend-row"><span style="background:#d7f3ec"></span><strong>delivery</strong><p>Mezzo di invio. Confermare allineamento a destra e corsivo.</p></div><div class="legend-row"><span style="background:#fff0bf"></span><strong>date</strong><p>Luogo e data. Confermare posizione a destra e gestione placeholder.</p></div><div class="legend-row"><span style="background:#fde1d9"></span><strong>recipient</strong><p>Destinatario - nome. Confermare rientro dal centro pagina e grassetto sul nome.</p></div><div class="legend-row"><span style="background:#dfe5ff"></span><strong>subject</strong><p>Oggetto. Confermare etichetta 16 pt + contenuto 12 pt nello stesso paragrafo.</p></div><div class="legend-row"><span style="background:#efe3ff"></span><strong>opening</strong><p>Formula di apertura. Confermare se deve essere giustificata o sinistra.</p></div><div class="legend-row"><span style="background:#eef7df"></span><strong>body</strong><p>Corpo - premessa. Confermare font, giustificazione e spaziatura.</p></div><div class="legend-row"><span style="background:#f7e6c6"></span><strong>section_left</strong><p>Sezione sinistra. Confermare 14 pt bold, keep_with_next.</p></div><div class="legend-row"><span style="background:#d8ecff"></span><strong>numbered</strong><p>Paragrafo numerato. Confermare prefisso numero in grassetto.</p></div><div class="legend-row"><span style="background:#dff7ff"></span><strong>enum</strong><p>Sotto-elenco. Confermare rientro 0.5 cm.</p></div><div class="legend-row"><span style="background:#ffd9e8"></span><strong>section_center</strong><p>Titolo rituale centrale. Confermare 16 pt bold, centrato, keep_together.</p></div><div class="legend-row"><span style="background:#ffe5c8"></span><strong>closing</strong><p>Chiusura. Confermare destra e corsivo.</p></div><div class="legend-row"><span style="background:#f3dfc8"></span><strong>signature</strong><p>Firma. Confermare destra e grassetto.</p></div><div class="legend-row"><span style="background:#e2e3e5"></span><strong>attachments</strong><p>Allegati - label. Confermare spazio prima e grassetto.</p></div><div class="legend-row"><span style="background:#eef0f2"></span><strong>attachment_item</strong><p>Allegato. Confermare rientro 0.5 cm.</p></div>
+      <h2>Variabili cliente</h2>
+      <ul class="review-list">
+        <li>Font e dimensione per ogni ruolo.</li>
+        <li>Allineamento e rientri.</li>
+        <li>Spazio prima/dopo e interlinea.</li>
+        <li>Grassetto/corsivo per label, numeri, firma e placeholder.</li>
+        <li>Regole keep-with-next / keep-together per evitare titoli isolati.</li>
+        <li>Regole di review/fallback per casi non standard.</li>
+      </ul>
+    </aside>
+  </div>
+
+  <p style="margin-top:28px">Generato da <code>tool/scripts/build_alfa_letter_dissection_html.py</code> il 2026-06-22T14:35:19+00:00.</p>
+</main>
+</body>
+</html>

@@ -51,6 +51,7 @@ tool/
     bergamo_legal_letters.json
     acts_discovery_template.json
   scripts/
+    build_alfa_letter_dissection_html.py
     build_anatomy_html.py
     inspect_docx.py
   output/
@@ -67,6 +68,12 @@ Generate the confirmed letters anatomy:
 
 ```bash
 python3 tool/scripts/build_letters_anatomy_html.py
+```
+
+Generate the Alfa letter dissection page from the formatted example output:
+
+```bash
+python3 tool/scripts/build_alfa_letter_dissection_html.py
 ```
 
 Generate the initial acts discovery anatomy:
